@@ -45,7 +45,7 @@ const ProductDetail = ({ params: { id } }: ParamsType) => {
 
   return (
     <>
-      <section className="py-20 bg-white">
+      <section className="py-8 md:py-20 bg-white">
         <Wrapper className="flex flex-col">
           <h3 className="page-title">PRODUCT DETAIL</h3>
 

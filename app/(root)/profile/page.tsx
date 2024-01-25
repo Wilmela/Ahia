@@ -1,8 +1,12 @@
-import CategoryCard from "@/components/shared/CategoryCard";
 import ShopItems from "@/components/shared/ShopItems";
 import Wrapper from "@/components/shared/Wrapper";
 import { PRODUCT } from "@/constants";
 import { cn } from "@/lib/utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 const Field = ({
   caption,

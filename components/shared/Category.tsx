@@ -12,7 +12,7 @@ const Category = () => {
 
   return (
     <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 items-center gap-2">
-      {categories.map((cat: CatType, i: number) => {
+      {categories.slice(1, categories.length).map((cat: CatType, i: number) => {
         return (
           <li
             key={cat.name}

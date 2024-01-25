@@ -27,28 +27,26 @@ const Header = () => {
           <NavItem />
         </div>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 items-center">
           <SignedOut>
-            <Button asChild size='lg' className="btn w-12">
-              <Link href='/sign-in'>Sign-In</Link>
+            <Button asChild size="lg" className="btn">
+              <Link href="/sign-in">Sign-In</Link>
             </Button>
           </SignedOut>
 
+          <Link
+            href="/sell"
+            className="flex justify-center gap-2 bg-APP_BLUE/10 text-APP_BLUE py-3 px-6 rounded-full w-16 hover:bg-APP_BLUE hover:text-white ease-in duration-300"
+          >
+            <p className="font-[600]">Sell</p>
+          </Link>
           <SignedIn>
-            <Link
-              href="/sell"
-              className="flex justify-center gap-2 bg-APP_BLUE/10 text-APP_BLUE p-2 rounded-full w-16 hover:bg-APP_BLUE hover:text-white ease-in duration-300"
-            >
-              <p className="font-[600]">Sell</p>
-            </Link>
-
             <div className="flex gap-2">
               <Bell className="text-red-400" />
               <UserButton />
             </div>
           </SignedIn>
           {/* MOBILE NAV */}
-
           <MobileNav />
         </div>
       </Wrapper>

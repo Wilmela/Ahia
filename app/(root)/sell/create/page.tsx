@@ -1,5 +1,6 @@
-import SellForm from "@/components/shared/SellForm";
+import ProductForm from "@/components/shared/ProductForm";
 import Wrapper from "@/components/shared/Wrapper";
+import { auth } from "@clerk/nextjs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,11 +8,14 @@ export const metadata: Metadata = {
 };
 
 const SellPage = () => {
+   const { sessionClaims } = auth();
+   const userId = sessionClaims?.userId as string;
+   
   return (
-    <section className="bg-gray-50">
+    <section className="flex-1 bg-gray-50">
       <Wrapper className="flex flex-col items-center justify-center">
         <h3 className="heading-text mb-6">Post an Item</h3>
-        <SellForm type="Create" />
+        <ProductForm type="Create" userId={userId} />
       </Wrapper>
     </section>
   );

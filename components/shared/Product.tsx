@@ -1,25 +1,14 @@
 "use client";
 
+import { ProductType } from "@/type";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-type ProductProps = {
-  _id: string;
-  name: string;
-  image: string;
-  price: string;
-  condition: string;
-  description: string;
-  dealer: string;
-  phone: string;
-  category: string;
-  location: string;
-};
 
 const Product = ({
   _id,
   name,
-  image,
+  imageUrl,
   price,
   condition,
   description,
@@ -27,7 +16,7 @@ const Product = ({
   phone,
   category,
   location,
-}: ProductProps) => {
+}: ProductType) => {
   const router = useRouter();
 
   return (
@@ -38,7 +27,7 @@ const Product = ({
     >
       <div className="w-full h-[1000px] rounded-md overflow-hidden relative flex items-center justify-center bg-APP_ORANGE/10">
         <Image
-          src={image}
+          src={imageUrl}
           fill
           alt={name}
           className="object-cover object-center"
@@ -47,12 +36,16 @@ const Product = ({
           {category}
         </p>
         <div className="absolute inset-x-0 bottom-2">
-          <p className="text-gray-400 font-[400] text-xs text-center uppercase">{dealer}</p>
-          <p className="text-gray-400 font-[400] text-xs text-center uppercase">posted on Ahia</p>
+          <p className="text-gray-400 font-[400] text-xs text-center uppercase">
+            {dealer}
+          </p>
+          <p className="text-gray-400 font-[400] text-xs text-center uppercase">
+            posted on Ahia
+          </p>
         </div>
       </div>
 
-      <div className="bg-white flex flex-col py-2">
+      <div className="bg-white flex flex-col py-2 w-full">
         <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
           <p className="font-[500] line-clamp-1">{name}</p>
           <p className="text-sm bg-APP_BLUE/10 text-APP_DARK_GREEN w-fit p-2 rounded-2xl">

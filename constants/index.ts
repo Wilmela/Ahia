@@ -27,6 +27,10 @@ export const categories: CATEGORY_PROPS[] = [
     image: "/assets/images/female.png",
   },
   {
+    name: "Cars",
+    image: "/assets/images/car.png",
+  },
+  {
     name: "Repairs",
     image: "/assets/images/repair.png",
   },
@@ -183,11 +187,12 @@ export const sellFormInitialValues = {
   name: "",
   imageUrl: "",
   price: "",
-  condition: "",
+  condition: 'New',
   description: "",
+  availability: "Available",
   dealer: "",
   phone: "",
   category: "",
   location: "",
-  negotiable: false,
+  negotiable: true,
 };

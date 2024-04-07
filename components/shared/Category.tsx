@@ -21,9 +21,9 @@ const Category = () => {
 
               setCat(cat.name.toLowerCase());
             }}
-            className="p-2 bg-white flex flex-col items-center gap-2 shadow-md cursor-pointer"
+            className="py-4 bg-white flex flex-col items-center gap-2 shadow-md cursor-pointer hover:border-APP_LIGHT_GREEN/50 hover:border duration-300"
           >
-            <div className="w-32 h-32 rounded-full flex items-center justify-center bg-APP_ORANGE/10">
+            <div className="w-32 h-32 rounded-full flex items-center justify-center bg-APP_ORANGE/10 hover:scale-105 duration-300 hover:bg-APP_ORANGE/70">
               <Image
                 src={cat.image}
                 width={100}

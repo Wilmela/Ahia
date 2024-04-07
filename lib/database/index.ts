@@ -4,8 +4,6 @@ let cached = (global as any).mongoose || { conn: null, promise: null };
 const MONGO_URI = process.env.MONGO_URI as string;
 
 const connectToDB = async () => {
-  console.log("Connecting...");
-
   if (cached.conn) return cached.conn;
 
   if (!MONGO_URI) return new Error("MONGO_URI missing!");

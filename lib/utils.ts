@@ -1,14 +1,21 @@
 import { type ClassValue, clsx } from "clsx";
-import { error } from "console";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const handleError = (error: any) => {
-  if (typeof error === "string") return new Error(error);
+export const handleError = (error: unknown): string => {
+  let message: string;
 
-  const err = JSON.stringify(error);
-  return new Error(err);
+  if (error instanceof Error) {
+    message = error.message;
+  } else if (error && typeof error === "object" && "message" in error) {
+    message = String(error.message);
+  } else if (typeof error === "string") {
+    message = error;
+  } else {
+    message = "Oops, something went wrong.";
+  }
+  return message;
 };

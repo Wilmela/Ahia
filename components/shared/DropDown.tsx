@@ -9,7 +9,13 @@ import {
 } from "@/components/ui/select";
 import { categories } from "@/constants";
 
-const DropDown = ({ onFieldChange, value }: { onFieldChange: () => void, value: string }) => {
+export const DropDown = ({
+  onFieldChange,
+  value,
+}: {
+  onFieldChange: () => void;
+  value: string;
+}) => {
 
   return (
     <Select
@@ -18,7 +24,7 @@ const DropDown = ({ onFieldChange, value }: { onFieldChange: () => void, value: 
       onValueChange={onFieldChange}
       defaultValue={value}
     >
-      <SelectTrigger className="w-[180px] input-field" >
+      <SelectTrigger className="w-[180px] input-field">
         <SelectValue placeholder="General" />
       </SelectTrigger>
 
@@ -35,4 +41,67 @@ const DropDown = ({ onFieldChange, value }: { onFieldChange: () => void, value: 
   );
 };
 
-export default DropDown;
+export const ConditionDropDown = ({
+  onFieldChange,
+  value,
+}: {
+  onFieldChange: () => void;
+  value: string;
+}) => {
+
+  return (
+    <Select
+      name="selected"
+      value={value}
+      onValueChange={onFieldChange}
+      defaultValue={value}
+    >
+      <SelectTrigger className="w-[180px] input-field">
+        <SelectValue placeholder="New" />
+      </SelectTrigger>
+
+      <SelectContent>
+        {['New','Used'].map((item, i: number) => {
+          return (
+            <SelectItem key={item} value={item}>
+              {item}
+            </SelectItem>
+          );
+        })}
+      </SelectContent>
+    </Select>
+  );
+};
+
+export const AvailabilityDropDown = ({
+  onFieldChange,
+  value,
+}: {
+  onFieldChange: () => void;
+  value: string;
+}) => {
+
+  return (
+    <Select
+      name="selected"
+      value={value}
+      onValueChange={onFieldChange}
+      defaultValue={value}
+    >
+      <SelectTrigger className="w-[180px] input-field">
+        <SelectValue placeholder="Available" />
+      </SelectTrigger>
+
+      <SelectContent>
+        {['Available','Sold'].map((item, i: number) => {
+          return (
+            <SelectItem key={item} value={item}>
+              {item}
+            </SelectItem>
+          );
+        })}
+      </SelectContent>
+    </Select>
+  );
+};
+

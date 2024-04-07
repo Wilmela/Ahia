@@ -1,47 +1,53 @@
-import { ReactNode } from "react";
+import { ReactNode, cache } from "react";
 import Product from "@/components/shared/Product";
 import Wrapper from "@/components/shared/Wrapper";
-import { PRODUCT } from "@/constants";
 import { MapPin, Phone, Tag, UserRound } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import {
+  findAllProducts,
+  findProductsByCategory,
+  findProductById,
+} from "@/lib/actions/product.actions";
+import { ProductType } from "@/type";
 
 type ParamsType = {
   params: { id: string };
 };
-export const generateMetadata = ({ params }: ParamsType): Metadata => {
-  // async Fetch data to use external source
-  const product = PRODUCT.find((p) => p._id === params.id);
+
+// Cache the getProduct request call.
+const getProductById = cache(async (id: string) => {
+  return await findProductById(id);
+});
+
+// Dynamic Metadata
+export const generateMetadata = async ({
+  params: { id },
+}: ParamsType): Promise<Metadata> => {
+  const product: ProductType = await getProductById(id);
   return {
-    title: `product ${product?.name}-id:${product?._id}`,
+    title: `Product: ${product?.name}`,
+    openGraph: {
+      images: {
+        url: product?.imageUrl,
+      },
+    },
   };
 };
 
-// Helper Component
-const Info = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => (
-  <div
-    className={cn(
-      "flex gap-2 my-4 cursor-pointer hover:text-APP_LIGHT_GREEN transition-all duration-300",
-      className
-    )}
-  >
-    {children}
-  </div>
-);
+// Static Page Rendering
+export const generateStaticParams = async () => {
+  const products: ProductType[] = await findAllProducts();
+  return products.map((prod: ProductType) => ({ id: prod._id }));
+};
 
-type ProductType = (typeof PRODUCT)[number];
-
-const ProductByCategory = PRODUCT.filter((p) => p.category === "baby");
-
-const ProductDetail = ({ params: { id } }: ParamsType) => {
-  const product = PRODUCT.find((p) => p._id === id);
+const ProductDetail = async ({ params: { id } }: ParamsType) => {
+  const product: ProductType = await getProductById(id);
+  const relatedItems: ProductType[] = await findProductsByCategory(
+    product.category,
+    6
+  );
 
   return (
     <>
@@ -78,10 +84,10 @@ const ProductDetail = ({ params: { id } }: ParamsType) => {
             {/* RIGHT */}
             <div className="col-span-3 w-full h-[500px] overflow-hidden relative">
               <Image
-                src={product?.image as string}
+                src={product?.imageUrl as string}
                 alt="product_image"
                 fill
-                //   priority
+                priority
                 //     sizes="(min-width: 786px) 100vh, 400px"
                 className="object-contain"
               />
@@ -95,21 +101,18 @@ const ProductDetail = ({ params: { id } }: ParamsType) => {
         <Wrapper className="flex flex-col ">
           <h3 className="heading-text mb-8">Related Products</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center gap-4">
-            {ProductByCategory.map((item: ProductType, i: number) => {
-              {
-                /* Sort by category */
-              }
+            {relatedItems.map((item: ProductType) => {
               return (
                 <Product
+                  key={item._id}
                   _id={item._id}
                   name={item.name}
-                  image={item.image}
+                  imageUrl={item.imageUrl}
                   condition={item.condition}
                   description={item.description}
                   dealer={item.dealer}
                   phone={item.phone}
                   price={item.price}
-                  key={item._id}
                   category={item.category}
                   location={item.location}
                 />
@@ -123,3 +126,21 @@ const ProductDetail = ({ params: { id } }: ParamsType) => {
 };
 
 export default ProductDetail;
+
+// Helper Component
+const Info = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => (
+  <div
+    className={cn(
+      "flex gap-2 my-4 cursor-pointer hover:text-APP_LIGHT_GREEN transition-all duration-300",
+      className
+    )}
+  >
+    {children}
+  </div>
+);

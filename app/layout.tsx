@@ -10,8 +10,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('http://localhost:3000'),
   title: { template: `%s | Ahia`, default: "Ahia" },
-  description: "The marketplace for anything",
+  description: "The marketplace for anything. Buy and sell anything easy, save and in a speed of light.",
 };
 
 export default function RootLayout({

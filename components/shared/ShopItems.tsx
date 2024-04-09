@@ -25,7 +25,7 @@ const ShopItems = ({ products }: { products: any }) => {
           <Product
             _id={item._id}
             name={item.name}
-            image={item.image}
+            imageUrl={item.image}
             condition={item.condition}
             description={item.description}
             dealer={item.dealer}

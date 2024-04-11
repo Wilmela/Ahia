@@ -45,8 +45,8 @@ export const PRODUCT = [
   {
     _id: "1",
     name: "Semi-acoustic guitar",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "New",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -59,8 +59,8 @@ export const PRODUCT = [
   {
     _id: "2",
     name: "Phones",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "Used",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -73,8 +73,8 @@ export const PRODUCT = [
   {
     _id: "3",
     name: "Male",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "New",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -87,8 +87,8 @@ export const PRODUCT = [
   {
     _id: "4",
     name: "Female",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "New",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -101,8 +101,8 @@ export const PRODUCT = [
   {
     _id: "5",
     name: "Babies",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "Used",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -115,8 +115,8 @@ export const PRODUCT = [
   {
     _id: "6",
     name: "Babies",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "Used",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -129,8 +129,8 @@ export const PRODUCT = [
   {
     _id: "7",
     name: "Babies",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "Used",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -143,8 +143,8 @@ export const PRODUCT = [
   {
     _id: "8",
     name: "Phones",
-    image: "/assets/images/product.webp",
-    price: "100",
+    imageUrl: "/assets/images/product.webp",
+    price: 100,
     condition: "Used",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio, voluptate ea et corporis provident dolorum alias quaerat tempore illum corrupti quidem porro accusantium magni. Quos ad earum provident perferendis sequi obcaecati quia maxime ipsum! Ipsum expedita facilis ex nam maxime veniam nostrum dignissimos unde, facere amet ipsa, molestias doloribus",
@@ -187,7 +187,7 @@ export const sellFormInitialValues = {
   name: "",
   imageUrl: "",
   price: "",
-  condition: 'New',
+  condition: "New",
   description: "",
   availability: "Available",
   dealer: "",
@@ -195,4 +195,12 @@ export const sellFormInitialValues = {
   category: "",
   location: "",
   negotiable: true,
+};
+
+export const formatNaira = (amount: number) => {
+  return Intl.NumberFormat("en-Us", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 2,
+  }).format(amount);
 };

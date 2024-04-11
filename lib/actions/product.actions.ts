@@ -25,6 +25,17 @@ export const createProduct = async ({ userId, item, path }: ProductParams) => {
   }
 };
 
+export const findProductsByOwner = async (owner: string) => {
+  try {
+    await connectToDB();
+    const products = await Product.find({ owner });
+    return JSON.parse(JSON.stringify(products));
+  } catch (error) {
+    return { error: handleError(error) };
+  }
+};
+
+// Should not be
 export const findProductById = async (id: string) => {
   try {
     await connectToDB();

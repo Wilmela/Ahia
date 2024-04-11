@@ -71,6 +71,8 @@ export async function POST(req: Request) {
     const newUser = await createUser(user);
     if (newUser) {
       await clerkClient.users.updateUserMetadata(id, {
+        // PrivateMetadata only accessible on the backend and opposed
+        // PublicMetadata which is accessible on both backend and frontend.
         privateMetadata: { userId: newUser._id },
       });
     }
@@ -95,7 +97,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: "OK", user: updatedUser });
   }
-  
+
   if (eventType === "user.deleted") {
     const { id } = evt.data;
 

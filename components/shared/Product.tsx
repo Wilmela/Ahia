@@ -1,5 +1,6 @@
 "use client";
 
+import { formatNaira } from "@/constants";
 import { ProductType } from "@/type";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,12 +26,12 @@ const Product = ({
       key={name}
       className="p-2 h-96 bg-white flex flex-col items-center gap-2 shadow-md cursor-pointer rounded-md"
     >
-      <div className="w-full h-[1000px] rounded-md overflow-hidden relative flex items-center justify-center bg-APP_ORANGE/10">
+      <div className="w-full h-[1000px] rounded-md overflow-hidden relative flex items-center justify-center">
         <Image
           src={imageUrl}
           fill
           alt={name}
-          className="object-cover object-center"
+          className="object-contain md:object-cover object-center"
         />
         <p className="absolute top-2 right-2 bg-APP_YELLOW/30 text-white p-2 rounded-full font-[300] text-xs">
           {category}
@@ -45,11 +46,11 @@ const Product = ({
         </div>
       </div>
 
-      <div className="bg-white flex flex-col py-2 w-full">
-        <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
+      <div className="bg-white flex flex-col py-2 w-full gap-1">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between h-12">
           <p className="font-[500] line-clamp-1">{name}</p>
           <p className="text-sm bg-APP_BLUE/10 text-APP_DARK_GREEN w-fit p-2 rounded-2xl">
-            ₦{price}
+            {formatNaira(price)}
           </p>
         </div>
 

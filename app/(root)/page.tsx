@@ -12,7 +12,7 @@ export default function Home() {
         <Wrapper className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0 py-8 lg:py-20">
           {/* LEFT */}
           <div className="w-full flex flex-col gap-7 sm:items-center md:items-start">
-            <h3 className="title sm:text-center md:text-left">
+            <h3 className="title sm:text-center md:text-left leading-tight">
               <span>Buy</span> <br className="sm:hidden md:block" />
               <span>and sell anything!</span>
             </h3>

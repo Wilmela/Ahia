@@ -1,4 +1,3 @@
-import React from "react";
 import Wrapper from "./Wrapper";
 import Link from "next/link";
 import NavItem from "./NavItem";
@@ -10,7 +9,7 @@ import { Button } from "../ui/button";
 const Header = () => {
   return (
     <header className="flex items-center border-b sticky top-0 inset-x-0 z-50 bg-white">
-      <Wrapper className="flex justify-between items-center w-full ">
+      <Wrapper className="flex justify-between items-center w-full">
         <Link href="/" className="flex font-[700] text-2xl items-center gap-2">
           <Store className="text-APP_LIGHT_GREEN w-10 h-10" />
 

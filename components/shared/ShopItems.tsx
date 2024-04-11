@@ -18,14 +18,14 @@ const ShopItems = ({ products }: { products: any }) => {
         );
 
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-center gap-5">
+    <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center gap-2">
       {/* Fetch all products  */}
       {filteredByCategory.map((item: ProductType, i: number) => {
         return (
           <Product
             _id={item._id}
             name={item.name}
-            imageUrl={item.image}
+            imageUrl={item.imageUrl}
             condition={item.condition}
             description={item.description}
             dealer={item.dealer}

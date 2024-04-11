@@ -25,7 +25,7 @@ export type ProductType = {
     _id: string;
     name: string;
     imageUrl: string;
-    price: string;
+    price: number;
     condition: string;
     description: string;
     dealer: string;

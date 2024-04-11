@@ -11,7 +11,7 @@ const Category = () => {
   const { setCat } = useShopContext();
 
   return (
-    <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 items-center gap-2">
+    <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 items-center gap-2">
       {categories.slice(1, categories.length).map((cat: CatType, i: number) => {
         return (
           <li
@@ -23,7 +23,7 @@ const Category = () => {
             }}
             className="py-4 bg-white flex flex-col items-center gap-2 shadow-md cursor-pointer hover:border-APP_LIGHT_GREEN/50 hover:border duration-300"
           >
-            <div className="w-32 h-32 rounded-full flex items-center justify-center bg-APP_ORANGE/10 hover:scale-105 duration-300 hover:bg-APP_ORANGE/70">
+            <div className="w-16 h-16 md:w-32 md:h-32 rounded-full flex items-center justify-center bg-APP_ORANGE/10 hover:scale-105 duration-300 hover:bg-APP_ORANGE/70">
               <Image
                 src={cat.image}
                 width={100}

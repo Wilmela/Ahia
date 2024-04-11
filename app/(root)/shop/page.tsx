@@ -18,18 +18,21 @@ const ShopPage = async () => {
       <Wrapper className="flex flex-col relative">
         <h3 className="page-title">SHOP ITEMS</h3>
 
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-          <div className="col-span-2 md:col-span-3 lg:col-span-5">
-            <ShopItems products={PRODUCT}/>
-          </div>
+        <CategoryCard className="flex flex-wrap gap-4 mb-4 md:hidden" />
 
-          {/* RIGHT */}
-          <div className="bg-white shadow-md sticky right-0 top-36 h-fit lg:col-span-1 p-2 md:pl-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        <div className="col-span-3 md:col-span-3 lg:col-span-5">
+
+        <ShopItems products={PRODUCT} />
+        </div>
+
+        {/* RIGHT */}
+        <div className="bg-white shadow-md sticky right-0 top-36 h-fit lg:col-span-1 p-2 md:pl-4 hidden md:block">
             <p className="font-semibold text-xs md:text-sm text-gray-700 text-center md:text-start">
               Sort by category
             </p>
             <CategoryCard />
-          </div>
+          </div> 
         </div>
       </Wrapper>
     </section>

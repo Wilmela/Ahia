@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 import { findUserById } from "@/lib/actions/user.actions";
 import Image from "next/image";
+import { findProductsByOwner } from "@/lib/actions/product.actions";
 
 export const metadata: Metadata = {
   title: "Profile",
@@ -27,9 +28,11 @@ const Field = ({
 );
 
 const ProfilePage = async () => {
-  const user = await findUserById("65b3a4d4e2e5c0fa49bc26ba");
+  const { sessionClaims } = auth();
 
-  const myProducts = PRODUCT.filter((product) => product.dealer === "Joy doe");
+  const user = await findUserById(sessionClaims?.userId as string);
+  const myProducts = await findProductsByOwner(sessionClaims?.userId as string);
+
   return (
     <section>
       <Wrapper className="grid grid-cols-1 md:grid-cols-7 py-8 lg:py-20">

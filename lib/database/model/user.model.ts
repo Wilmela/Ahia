@@ -8,7 +8,9 @@ interface IUser extends Document {
   firstName: string;
   lastName: string;
   imgUrl: string;
+  phone: string | number;
   products: ProductType[];
+  shopAddress: string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -18,12 +20,14 @@ const UserSchema = new Schema<IUser>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   imgUrl: { type: String },
+  phone: { type: String, default: "+2348031111111" },
   products: [
     {
       type: Schema.Types.ObjectId,
       ref: "Product",
     },
   ],
+  shopAddress: { type: String },
 });
 
 const User = models?.User || model("User", UserSchema);

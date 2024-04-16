@@ -2,6 +2,8 @@ import CategoryCard from "@/components/shared/CategoryCard";
 import ShopItems from "@/components/shared/ShopItems";
 import Wrapper from "@/components/shared/Wrapper";
 import { PRODUCT } from "@/constants";
+import { findAllProducts } from "@/lib/actions/product.actions";
+import { ProductType } from "@/type";
 import { Metadata } from "next";
 
 // Fetch product and include product name to metadata
@@ -10,8 +12,7 @@ export const metadata: Metadata = {
 };
 
 const ShopPage = async () => {
-  // TODO: fetch all products here
-
+  const products: ProductType[] = await findAllProducts();
 
   return (
     <section className="py-8 lg:py-20 bg-gray-50">
@@ -20,10 +21,10 @@ const ShopPage = async () => {
 
         <CategoryCard className="flex flex-wrap gap-4 mb-4 md:hidden" />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
-        <div className="col-span-3 md:col-span-3 lg:col-span-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        <div className="col-span-3 lg:col-span-5">
 
-        <ShopItems products={PRODUCT} />
+        <ShopItems products={products} />
         </div>
 
         {/* RIGHT */}

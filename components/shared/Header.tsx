@@ -13,7 +13,7 @@ const Header = () => {
         <Link href="/" className="flex font-[700] text-2xl items-center gap-2">
           <Store className="text-APP_LIGHT_GREEN w-10 h-10" />
 
-          <div className="flex">
+          <div className="xr:flex hidden">
             <p className="text-APP_ORANGE">A</p>
             <p className="text-APP_YELLOW">H</p>
             <p className="text-APP_BLUE">I</p>

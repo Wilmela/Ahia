@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const SellPage = () => {
-   const { sessionClaims } = auth();
-   const userId = sessionClaims?.userId as string;
-   
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;  
+
   return (
     <section className="flex-1 bg-gray-50">
       <Wrapper className="flex flex-col items-center justify-center">

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider }  from '@clerk/nextjs';
+import { ClerkProvider } from "@clerk/nextjs";
+import { siteConfig } from "../config/site";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -10,9 +11,12 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
-  title: { template: `%s | Ahia`, default: "Ahia" },
-  description: "The marketplace for anything. Buy and sell anything easy, save and in a speed of light.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    template: `%s | ${siteConfig.title}`,
+    default: siteConfig.title,
+  },
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -21,7 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        variables: { colorPrimary: "#000" },
+        elements: {
+          formButtonPrimary: "bg-APP_ORANGE text-white font-semibold",
+          formButtonReset: "bg-APP_ORANGE text-white font-semibold",
+        },
+      }}
+    >
       <html lang="en">
         <body className={montserrat.variable}>{children}</body>
       </html>

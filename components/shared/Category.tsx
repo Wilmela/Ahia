@@ -11,7 +11,7 @@ const Category = () => {
   const { setCat } = useShopContext();
 
   return (
-    <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 items-center gap-2">
+    <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 items-center gap-2">
       {categories.slice(1, categories.length).map((cat: CatType, i: number) => {
         return (
           <li

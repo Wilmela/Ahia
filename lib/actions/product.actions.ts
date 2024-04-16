@@ -6,6 +6,7 @@ import Product from "../database/model/product.model";
 import { revalidatePath } from "next/cache";
 import { handleError } from "../utils";
 import { sellFormSchema } from "../validation";
+import User from "../database/model/user.model";
 
 export const createProduct = async ({ userId, item, path }: ProductParams) => {
   const validProduct = sellFormSchema.safeParse(item);
@@ -18,7 +19,19 @@ export const createProduct = async ({ userId, item, path }: ProductParams) => {
 
     const newProduct = await Product.create({ ...item, owner: userId });
 
-    revalidatePath(path);
+    // Add new product to the owner's products array
+    const user = await User.findById(userId);
+    const updatedUserProduct = await User.findByIdAndUpdate(
+      user._id,
+      {
+        $set: {
+          products: [...user.products, newProduct],
+        },
+      },
+      { new: true }
+    );
+
+    if (updatedUserProduct) revalidatePath(path);
     return JSON.parse(JSON.stringify(newProduct));
   } catch (error) {
     return { error: handleError(error) };

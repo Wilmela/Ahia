@@ -11,6 +11,7 @@ import {
   findProductById,
 } from "@/lib/actions/product.actions";
 import { ProductType } from "@/type";
+import { formatNaira } from "@/constants";
 
 type ParamsType = {
   params: { id: string };
@@ -68,7 +69,7 @@ const ProductDetail = async ({ params: { id } }: ParamsType) => {
               </div>
               <p>{product?.description}</p>
               <Info>
-                <Tag />₦{product?.price}
+                <Tag />{formatNaira(product?.price)}
               </Info>
               <Info>
                 <UserRound /> {product?.dealer}

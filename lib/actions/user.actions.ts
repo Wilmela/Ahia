@@ -4,6 +4,7 @@ import { UpdateUserParams, UserParams } from "@/type";
 import connectToDB from "../database";
 import User from "../database/model/user.model";
 import { handleError } from "../utils";
+import Product from "../database/model/product.model";
 
 export const createUser = async (user: UserParams) => {
   try {
@@ -19,7 +20,11 @@ export const findUserById = async (userId: string) => {
   try {
     await connectToDB();
 
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).populate({
+      path: "products",
+      model: Product,
+    });
+    if (!user) throw new Error("User not found.");
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
     return { error: handleError(error) };

@@ -38,6 +38,10 @@ export const categories: CATEGORY_PROPS[] = [
     name: "Babies",
     image: "/assets/images/babies.png",
   },
+  {
+    name: "Code",
+    image: "/assets/images/code.png",
+  },
 ];
 
 // PRODUCT

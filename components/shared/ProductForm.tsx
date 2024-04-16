@@ -289,8 +289,13 @@ const ProductForm = ({ type, userId }: FormType) => {
           </div>
         </div>
 
-        <Button className="btn" type="submit" size="lg">
-          Post
+        <Button
+          className="btn"
+          disabled={form.formState.isSubmitting}
+          type="submit"
+          size="lg"
+        >
+          {form.formState.isSubmitting ? "uploading..." : "Post"}
         </Button>
       </form>
     </Form>

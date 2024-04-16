@@ -73,7 +73,7 @@ export async function POST(req: Request) {
       await clerkClient.users.updateUserMetadata(id, {
         // PrivateMetadata only accessible on the backend and opposed
         // PublicMetadata which is accessible on both backend and frontend.
-        privateMetadata: { userId: newUser._id },
+        publicMetadata: { userId: newUser._id },
       });
     }
 

@@ -20,7 +20,7 @@ const config = withUt({
     },
     extend: {
       screens: {
-        xr: "413px",
+        xr: "389px",
       },
       colors: {
         APP_ORANGE: "#F05827",

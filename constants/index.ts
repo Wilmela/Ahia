@@ -201,10 +201,4 @@ export const sellFormInitialValues = {
   negotiable: true,
 };
 
-export const formatNaira = (amount: number) => {
-  return Intl.NumberFormat("en-Us", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 2,
-  }).format(amount);
-};
+

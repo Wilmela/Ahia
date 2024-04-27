@@ -3,7 +3,7 @@ import Product from "@/components/shared/Product";
 import Wrapper from "@/components/shared/Wrapper";
 import { MapPin, Phone, Tag, UserRound } from "lucide-react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, formatNaira } from "@/lib/utils";
 import { Metadata } from "next";
 import {
   findAllProducts,
@@ -11,7 +11,6 @@ import {
   findProductById,
 } from "@/lib/actions/product.actions";
 import { ProductType } from "@/type";
-import { formatNaira } from "@/constants";
 
 type ParamsType = {
   params: { id: string };

@@ -53,7 +53,7 @@ const ProfilePage = async () => {
         </div>
 
         <div className="md:col-span-6">
-          <h3 className="heading-text">My Listings</h3>
+          <h3 className="heading-text my-4">My Listings</h3>
 
           <ShopItems products={user?.products} />
         </div>

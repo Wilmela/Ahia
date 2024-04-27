@@ -19,3 +19,12 @@ export const handleError = (error: unknown): string => {
   }
   return message;
 };
+
+// FORMAT CURRENCY
+export const formatNaira = (amount: number) => {
+  return new Intl.NumberFormat("en-Us", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
